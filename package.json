@@ -1,0 +1,33 @@
+{
+  "name": "id3v2-in-browser",
+  "version": "0.0.0",
+  "description": "",
+  "keywords": [],
+  "repository": "KenanY/id3v2-in-browser",
+  "license": "MIT",
+  "author": "Kenan Yildirim <kenan@kenany.me> (http://kenany.me/)",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "LICENSE.txt"
+  ],
+  "scripts": {
+    "build": "browserify client > static/bundle.js",
+    "size": "browserify client | uglifyjs -c warnings=false -m | gzip | wc -c | pretty-bytes",
+    "start": "node server.js",
+    "watch": "watchify client -o static/bundle.js -dv & DEBUG=* nodemon server.js"
+  },
+  "dependencies": {
+    "drag-drop": "^2.0.0",
+    "id3v2-parser": "^0.3.0",
+    "readable-stream": "1.0.33-1"
+  },
+  "devDependencies": {
+    "browserify": "^6.2.0",
+    "node-static": "^0.7.6",
+    "nodemon": "^1.2.1",
+    "pretty-bytes": "^1.0.1",
+    "uglifyjs": "^2.3.6",
+    "watchify": "^2.1.1"
+  }
+}
