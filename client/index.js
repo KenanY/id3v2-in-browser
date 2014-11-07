@@ -1,7 +1,6 @@
 var dragDrop = require('drag-drop/buffer');
 var id3v2 = require('id3v2-parser');
 var BufferList = require('bl');
-var encode = require('base-64').encode;
 
 dragDrop('body', function(files) {
   var parser = new id3v2();
@@ -10,10 +9,17 @@ dragDrop('body', function(files) {
     console.log(tag);
 
     // album art
-    if (tag.type === 'APIC') {
-      var src64 = encode(String.fromCharCode.apply(null, tag.value.data));
-      document.getElementById('albumart').src = 'data:' + tag.value.mime +
-        ';base64,' + src64;
+    if (tag.type === 'APIC' && typeof Blob !== 'undefined') {
+      var blob = new Blob([tag.value.data], {type: tag.value.mime});
+      var url = URL.createObjectURL(blob);
+      var img = document.getElementById('albumart');
+      img.src = url;
+
+      // release the object URL on-load since it is no longer needed once the
+      // image has been loaded.
+      img.onload = function() {
+        URL.revokeObjectURL(this.src);
+      }
     }
   });
 
