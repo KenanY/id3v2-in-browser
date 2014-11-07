@@ -18,9 +18,9 @@
     "watch": "watchify client -o static/bundle.js -dv & DEBUG=* nodemon server.js"
   },
   "dependencies": {
+    "bl": "^0.9.3",
     "drag-drop": "^2.0.0",
-    "id3v2-parser": "^0.3.0",
-    "readable-stream": "1.0.33-1"
+    "id3v2-parser": "^0.3.0"
   },
   "devDependencies": {
     "browserify": "^6.2.0",
