@@ -12,7 +12,7 @@
     "LICENSE.txt"
   ],
   "scripts": {
-    "build": "browserify client > static/bundle.js",
+    "build": "browserify client -p bundle-collapser/plugin > static/bundle.js",
     "size": "browserify client | uglifyjs -c warnings=false -m | gzip | wc -c | pretty-bytes",
     "start": "node server.js",
     "watch": "watchify client -o static/bundle.js -dv & DEBUG=* nodemon server.js"
@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "browserify": "^6.2.0",
+    "bundle-collapser": "^1.1.0",
     "node-static": "^0.7.6",
     "nodemon": "^1.2.1",
     "pretty-bytes": "^1.0.1",
