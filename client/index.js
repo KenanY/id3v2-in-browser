@@ -11,6 +11,6 @@ dragDrop('body', function(files) {
 
   var bl = new BufferList();
 
-  bl.append(files[0])
+  bl.append(files[0]);
   bl.pipe(parser);
 });
