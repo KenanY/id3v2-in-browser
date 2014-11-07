@@ -1,16 +1,8 @@
 {
   "name": "id3v2-in-browser",
-  "version": "0.0.0",
-  "description": "",
-  "keywords": [],
   "repository": "KenanY/id3v2-in-browser",
   "license": "MIT",
   "author": "Kenan Yildirim <kenan@kenany.me> (http://kenany.me/)",
-  "main": "index.js",
-  "files": [
-    "index.js",
-    "LICENSE.txt"
-  ],
   "scripts": {
     "build": "browserify client -p bundle-collapser/plugin > static/bundle.js",
     "size": "browserify client | uglifyjs -c warnings=false -m | gzip | wc -c | pretty-bytes",
