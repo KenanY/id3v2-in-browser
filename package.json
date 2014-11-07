@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "build": "browserify client -p bundle-collapser/plugin > static/bundle.js",
-    "size": "browserify client -p bundle-collapser/plugin | uglifyjs -c warnings=false -m | gzip | wc -c | pretty-bytes",
+    "minify": "npm run build && uglifyjs -c warnings=false -m < static/bundle.js > static/bundle.min.js",
+    "size": "npm run minify && gzip < static/bundle.min.js | wc -c | pretty-bytes",
     "start": "node server.js",
     "watch": "watchify client -o static/bundle.js -dv & DEBUG=* nodemon server.js"
   },
