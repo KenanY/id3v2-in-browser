@@ -1,6 +1,7 @@
 var dragDrop = require('drag-drop/buffer');
 var id3v2 = require('id3v2-parser');
 var BufferList = require('bl');
+var nonAscii = require('non-ascii');
 
 dragDrop('body', function(files) {
   var parser = new id3v2();
@@ -9,7 +10,11 @@ dragDrop('body', function(files) {
     console.log(tag);
 
     // album art
-    if (tag.type === 'APIC' && typeof Blob !== 'undefined') {
+    //
+    // make sure `Blob` is available and also ensure that the mime type is ascii
+    // because for some reason some of my music's mime types aren't ascii
+    if (tag.type === 'APIC' && typeof Blob !== 'undefined' &&
+        !nonAscii.test(tag.value.mime)) {
       var blob = new Blob([tag.value.data], {type: tag.value.mime});
       var url = URL.createObjectURL(blob);
       var img = document.getElementById('albumart');
