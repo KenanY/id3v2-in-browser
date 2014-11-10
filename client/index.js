@@ -24,7 +24,7 @@ dragDrop('body', function(files) {
       // image has been loaded.
       img.onload = function() {
         URL.revokeObjectURL(this.src);
-      }
+      };
     }
   });
 
