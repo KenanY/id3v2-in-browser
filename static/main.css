@@ -12,6 +12,11 @@ body {
   padding: 20px;
 }
 
+footer {
+  font-size: 0.8em;
+  margin-top: 30px;
+}
+
 .drag {
   border: 5px red dashed;
   background: rgba(255, 0, 0, .3);
