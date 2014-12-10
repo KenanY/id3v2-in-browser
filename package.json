@@ -19,7 +19,7 @@
     "non-ascii": "^1.0.0"
   },
   "devDependencies": {
-    "browserify": "^6.2.0",
+    "browserify": "^7.0.0",
     "bundle-collapser": "^1.1.0",
     "node-static": "^0.7.6",
     "nodemon": "^1.2.1",
